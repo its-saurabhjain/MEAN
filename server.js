@@ -17,7 +17,11 @@ app.use('/js', express.static(__dirname + '/client/js'));
 app.post('/api/meetups', meetupsController.create);
 app.get('/api/meetups', meetupsController.list);
 
-app.listen(3000,function()
+//Heroku
+app.set('port', (process.env.PORT || 5000));
+
+
+app.listen(app.get('port'), function()
 	{
 		console.log('I am listening');
 
